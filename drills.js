@@ -8,7 +8,7 @@ const knexInstance= knex({
 
 function itemsThatContainText(searchTerm) {
     knexInstance
-        .select('id', 'name', 'price', 'category')
+        .select('*')
         .from('shopping_list')
         .where('name', 'ILIKE', `%${searchTerm}%`)
         .then(result => {
@@ -23,7 +23,7 @@ function paginateList(pageNumber) {
     const offset= productsPerPage * (pageNumber - 1)
 
     knexInstance
-        .select('id', 'name', 'price', 'category')
+        .select('*')
         .from('shopping_list')
         .limit(productsPerPage)
         .offset(offset)
